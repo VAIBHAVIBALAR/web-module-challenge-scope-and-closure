@@ -88,35 +88,31 @@ Use the finalScore function below to do the following:
   "Away": 5
 }
 */ 
-
 function finalScore(inningCB, n){
-let totalScore = 0;
-let Home = 0;
-let Away = 0;
-for (let i = 0; i<=n; i++){
-  Home = inningCB();
-  Away = inningCB();
-if(i=n){
-  totalScore = Home + Away;
+let homeScore = 0;
+let awayScore = 0;
+for (let i = 0; i<n; i++){
+  homeScore += inningCB(),
+  awayScore += inningCB()
 }
+return {Home: homeScore, Away: awayScore} 
 }
-return {
-  Home: inningCB(),
-  Away: inningCB(),
-  total: totalScore
-}
-}
-console.log(finalScore(inning, 6));
+console.log(finalScore(inning, 9));
+console.log(finalScore(inning, 9));
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningCB) {
+return {
+  Home: inningCB(),
+  Away: inningCB()
 }
-
+}
+console.log(getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -159,9 +155,38 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB, inningCB, n) {
+
+let scBoard = [];
+let totalHome = 0;
+let totalAway = 0;
+
+for(let i=0; i<n; i++)
+{
+  let initAway = getInningScoreCB(inningCB).Away;
+  let initHome = getInningScoreCB(inningCB).Home;
+  scBoard[i]=`Inning${i+1}: Away ${initAway} - Home ${initHome}`;
+  totalHome += initHome;
+  totalAway += initAway;
+  }
+
+   if(totalAway != totalHome)
+   {
+    scBoard.push(`Final Score: Away ${totalAway} - Home ${totalHome}`);
+   }
+   else if(totalAway == totalHome)
+   {
+    scBoard.push(`This game will require extra innings: Away ${totalAway} - Home ${totalHome}`);
+
+   }
+
+ return scBoard;
 }
+console.log(scoreboard(getInningScore, inning, 8));
+
+
+
+
 
 
 
