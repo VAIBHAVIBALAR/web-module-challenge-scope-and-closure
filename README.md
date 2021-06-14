@@ -43,6 +43,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+closure can be said as a group of function through which we can access to an outer function under which it is placed.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,9 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
 
+the inner function is a closure, it's defined inside the personalDice function and it's available only within the body of personalDice function.
+
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+when calling dansRoll for the first time name parameter will be the Dan and the newRoll may be any random number, for the second time the name remains the same but the random number changes
+
+c. What is the lexical scope of `newRoll`? 
+ 
+lexical scope of newRoll will be the entire personalDice function scope
 
 ### Task 3 - Stretch Goals
 
